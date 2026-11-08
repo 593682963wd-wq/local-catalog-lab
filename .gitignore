@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+.env
+outputs/
+work/
+*.sqlite*
+*.db
+.DS_Store

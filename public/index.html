@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>商品采集工作台 · 本地演示</title><link rel="stylesheet" href="/style.css"><script src="/app.js" type="module"></script></head>
+<body>
+<a class="skip" href="#results">跳到商品结果</a>
+<header class="topbar"><div class="brand"><span class="mark" aria-hidden="true">E</span><span>本地商品目录 <span class="brand-sub">/ 技术实验</span></span></div><span class="local-label">本地样例 · 非闲鱼实采</span></header>
+<main>
+  <section class="heading"><div><p class="eyebrow">采集与复核</p><h1>把商品列表，整理成可检查的结果。</h1><p class="intro">从两家虚构样例店铺采集，保留来源，去重后按规则筛选。</p></div><button class="primary" id="collect" type="button">运行本地采集演示 <span aria-hidden="true">↗</span></button></section>
+  <p id="status" class="status" role="status" aria-live="polite">准备就绪。运行后查看商品、异常与导出文件。</p>
+  <div class="workspace">
+    <aside class="sources"><h2>数据来源</h2><button class="source active" data-shop="all" type="button"><span>全部样例店铺</span><span class="source-count" id="count-all">—</span></button><button class="source" data-shop="demo-a" type="button"><span>样例店铺 A</span><span class="source-count" id="count-demo-a">—</span></button><button class="source" data-shop="demo-b" type="button"><span>样例店铺 B</span><span class="source-count" id="count-demo-b">—</span></button><p class="source-note">数字为采集原始行数。<br>商品按 ID 合并，来源仍保留。</p>
+      <details class="rules"><summary>本次筛选规则</summary><p>样例价格 ¥10–100；类别为办公素材或设计素材；排除标题中的“下架、侵权、缺货”。</p><p>满足规则只代表待人工复核，不代表授权、质量、销量或收益。</p></details>
+    </aside>
+    <section id="results" class="results" aria-labelledby="result-title" tabindex="-1">
+      <div class="result-head"><div><h2 id="result-title">商品结果</h2><p id="run-time">尚未运行</p></div><div class="exports"><a id="export-csv" class="secondary disabled" aria-disabled="true">导出全部 CSV</a><a id="export-json" class="secondary disabled" aria-disabled="true">JSON</a></div></div>
+      <dl class="metrics"><div><dt>原始行</dt><dd id="metric-input">—</dd></div><div><dt>有效去重商品</dt><dd id="metric-unique">—</dd></div><div><dt>待人工复核</dt><dd id="metric-candidate">—</dd></div><div><dt>合并重复行</dt><dd id="metric-duplicate">—</dd></div></dl>
+      <div class="filters"><label class="search"><span class="sr-only">搜索商品标题或 ID</span><input id="search" type="search" placeholder="搜索商品标题或 ID" autocomplete="off"></label><label class="select-label"><span class="sr-only">筛选状态</span><select id="state"><option value="all">全部状态</option><option value="candidate">待人工复核</option><option value="excluded">规则排除</option><option value="conflict">内容冲突</option></select></label><span id="visible-count" aria-live="polite">0 件商品</span></div>
+      <div class="table-scroll" tabindex="0" aria-label="商品结果表，可横向滚动"><table><thead><tr><th scope="col">商品 / ID</th><th scope="col">样例价格</th><th scope="col">来源</th><th scope="col">筛选状态</th><th scope="col"><span class="sr-only">复核操作</span></th></tr></thead><tbody id="items"></tbody></table></div>
+      <div class="empty" id="empty"><span class="empty-symbol" aria-hidden="true">↳</span><h3>先采集，再逐项复核。</h3><p>运行本地演示，结果会出现在这里。</p></div>
+      <details id="invalids" class="invalids" hidden><summary id="invalid-summary">异常记录</summary><ul id="invalid-list"></ul></details>
+      <p class="result-foot" id="result-foot">所有金额、商品和店铺均为虚构演示数据。</p>
+    </section>
+  </div>
+  <footer>独立本地技术 MVP <span>采集 → 去重 → 筛选 → 复核 → 导出</span></footer>
+</main>
+<dialog id="detail" aria-labelledby="detail-title"><div class="dialog-head"><p>来源复核</p><button id="close-detail" type="button" class="secondary">关闭</button></div><h2 id="detail-title"></h2><p id="detail-meta"></p><h3>筛选理由</h3><ul id="detail-reasons"></ul><h3>原始出现记录</h3><ol id="detail-sources"></ol><p class="source-note">链接只打开本机样例页。不连接闲鱼，不执行上架或联系操作。</p></dialog>
+</body></html>

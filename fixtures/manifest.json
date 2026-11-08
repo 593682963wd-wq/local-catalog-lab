@@ -1,0 +1,15 @@
+{
+  "schema": "local-products-v1",
+  "sample_only": true,
+  "max_items_per_shop": 3000,
+  "shops": [
+    { "id": "demo-a", "name": "样例店铺 A", "path": "/fixtures/shop-a.html" },
+    { "id": "demo-b", "name": "样例店铺 B", "path": "/fixtures/shop-b.html" }
+  ],
+  "rules": {
+    "min_price_cents": 1000,
+    "max_price_cents": 10000,
+    "categories": ["办公素材", "设计素材"],
+    "excluded_terms": ["下架", "侵权", "缺货"]
+  }
+}
